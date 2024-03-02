@@ -5,18 +5,18 @@ function Register() {
         <div className='Register'>
             <img id='reg_background_img' height={'100%'} width={'50%'} src="src\assets\image_13.png" alt="background_img" />
             <h1 style={{
-                color: '#FFFFFF', 
+                color: '#FFFFFF',
                 width: '695px',
                 height: '143px',
-                fontFamily: 'Roboto', 
+                fontFamily: 'Roboto',
                 fontSize: '55px',
                 fontWeight: '900',
-                lineHeight: '78px', 
+                lineHeight: '78px',
                 letterSpacing: '0.02em',
                 textAlign: 'left',
-                position:'absolute',
-                marginLeft:'30px',
-                marginTop:'34%'
+                position: 'absolute',
+                marginLeft: '30px',
+                marginTop: '34%'
             }}>Discover new things on Superapp</h1>
 
             <div className='form'>
@@ -34,8 +34,15 @@ function Register() {
                     width: '400px',
                     height: '55px',
                     borderRadius: '28px',
-                    background: '#72DB73' // Background color
+                    fontFamily: 'Roboto', // Font family
+                    fontSize: '20px', // Font size
+                    fontWeight: '600', // Font weight
+                    lineHeight: '32px', // Line height
+                    letterSpacing: '0.02em', // Letter spacing
+                    background: '#72DB73', // Background color
+                    color: '#FFFFFF', // Text color
                 }}>SIGN UP</button>
+
                 <p style={{ color: '#7C7C7C' }} id='terms'>
                     By clicking on Sign up. you agree to Superapp <span style={{ color: '#72DB73', margin: '0' }}>Terms and Conditions of Use</span>
                 </p>
