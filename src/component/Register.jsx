@@ -7,19 +7,53 @@ function Register() {
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
     const [shareData, setShareData] = useState(false);
+    const [nameError, setNameError] = useState('');
+    const [usernameError, setUsernameError] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [mobileError, setMobileError] = useState('');
+    const [shareDataError, setShareDataError] = useState('');
 
-    useEffect(()=>{
+    useEffect(() => {
         const storedFormData = JSON.parse(localStorage.getItem('formData'));
-        if(storedFormData){
+        if (storedFormData) {
             setName(storedFormData.name)
             setUsername(storedFormData.username)
             setEmail(storedFormData.email)
             setMobile(storedFormData.mobile)
             setShareData(storedFormData.shareData)
         }
-    },[])
+    }, [])
 
     const handleSubmit = () => {
+
+        setNameError('');
+        setUsernameError('');
+        setEmailError('');
+        setMobileError('');
+        setShareDataError('');
+
+        if (!name) {
+            setNameError('Name is required');
+            return;
+        }
+        if (!username) {
+            setUsernameError('Username is required');
+            return;
+        }
+        if (!email) {
+            setEmailError('Email is required');
+            return;
+        }
+        if (!mobile) {
+            setMobileError('Mobile is required');
+            return;
+        }
+        // Additional validation for checkbox
+        if (!shareData) {
+            setShareDataError('Please agree to share your data');
+            return;
+        }
+
         // Create an object to hold form data
         const formData = {
             name,
@@ -59,12 +93,18 @@ function Register() {
                 <h1 style={{ color: '#72DB73', fontFamily: 'Single Day', fontWeight: 400, fontSize: '67px', lineHeight: '93.59px', margin: 0, padding: 0 }}>Super app</h1>
                 <h3 id='createAccount' style={{ color: '#FFFFFF', margin: 0, padding: 0 }}>Create your new account</h3>
                 <input type="text" id="input" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
+                {nameError && <div style={{ color: 'red' }}>{nameError}</div>}
                 <input type="text" id="input" placeholder="UserName" value={username} onChange={e => setUsername(e.target.value)} />
+                {usernameError && <div style={{ color: 'red' }}>{usernameError}</div>}
                 <input type="email" id="input" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+                {emailError && <div style={{ color: 'red' }}>{emailError}</div>}
                 <input type="tel" id="input" placeholder="Mobile" value={mobile} onChange={e => setMobile(e.target.value)} />
+                {mobileError && <div style={{ color: 'red' }}>{mobileError}</div>}
                 <div className="checkbox-container" style={{ display: 'flex' }}>
                     <input type="checkbox" id="inpu" value={shareData} onChange={e => setShareData(e.target.value)} />
-                    <p style={{ color: '#7C7C7C', fontFamily: 'DM Sans', marginLeft: '15px' }}>Share my registration data with Superapp</p>
+                    <label htmlFor="input" style={{ color: '#7C7C7C', fontFamily: 'DM Sans', marginLeft: '15px' }}>Share my registration data with Superapp</label>
+                    {shareDataError && <div style={{ color: 'red' }}>{shareDataError}</div>}
+
                 </div>
                 <button style={{
                     width: '400px',
